@@ -7,7 +7,7 @@ def find_files():
         days = raw_input('\nthe number of days for archiving the logs (number): ')
         if days == 'q' or days == 'quit':
             sys.exit(0)
-        logs = os.popen('find . -type f -mtime +%s -maxdepth 1' % days)
+        logs = os.popen('find . -maxdepth 1 -type f -mtime +%s' % days)
         logs_files = logs.read().split('\n')[:-1]
         if not logs_files:
             print"\nno files found!\n"
@@ -28,7 +28,7 @@ def achive(n):
 
 def move():
     backupDir = raw_input('\nmove *.gz to /home/backup or you specify the directory: ')
-    if backupDir == 'q' or backupDir == 'quit'
+    if backupDir == 'q' or backupDir == 'quit':
         sys.exit(0)
     if not os.path.exists(backupDir):
         subprocess.call('mkdir %s' % backupDir,shell=True)
